@@ -1,0 +1,89 @@
+
+{% extends "layout.html" %}
+
+<!-- main _______________________________________________________________-->
+{% block content %}
+
+<h1>About</h1>
+
+<pre>
+***
+</pre>
+
+<pre>
+Projecte MongoDB - PyMongo - Framework
+Aquest projecte consisteix en integrar MongoDB, Python i un Framework escollit per vosaltres (Flask),
+per fer una versió simplificada d'un muntatge web-gestor de base de dades.
+
+Zip amb:
+• El directori dump resultat del comandament:
+mongodump -d BDnom_cognom -c Usuaris (amb les opcions -d i -c per a la bd i la col·lecció)
+• El fitxer o fitxers .py i els directoris de la web creada.
+
+L'objectiu és crear el que s'anomena un 'web scrapper' que és un programa que es connecta a una
+pàgina i n'extreu el contingut. Aquest contingut l'emmagatzema en una base de dades pròpia i
+després es crea un sistema per a fer consultes sobre aquestes dades.
+Hi ha diferents llibreries en Python per a fer web scraping, una de senzilla que us pot servir és
+Beautiful Soup.
+
+Per a fer-ho heu de triar una pàgina d'internet que ofereixi algun servei on es llistin productes.
+Pàgines com www.milanuncios.com en són un bon exemple.
+Inspeccioneu el codi font de la pàgina que es dóna després de fer una consulta i mireu quins 'tags'
+HTML/CSS identifiquen cada part de la sortida, ja que us serviran per a fer scrapping.
+Això vol dir que el vostre projecte treballarà exclusivament amb les dades obtingudes d'una web
+determinada, que la podeu triar vosaltres.
+
+El funcionament serà:
+1. En accedir a la web han d'aparèixer dos camps: Usuari i contrasenya. 
+    Aquests estaran guardats a la base de dades. 
+    Hi ha d'haver també un enllaç cap a una pàgina per a registrar un nou usuari (punt 4).
+A la pantalla de login cal comprovar l'existència dels usuaris.
+
+2. Si s'autoritza l'entrada, tindrem una pàgina on hi haurà tres opcions: 
+    . aprenentatge
+    . consultes
+    . reset 
+Ho podeu fer en una sola pàgina o crear-ne una per cada opció.
+
+• Aprenentatge: hi haurà un camp on posarem una URL amb resultats d'una consulta 
+(millor si és extensa) d'aquella pàgina. 
+Es procedirà a connectar-se a aquella pàgina, a analitzar-la 
+    i emmagatzemar en una base de dades MongoDB les dades que considereu rellevants. 
+Per exemple, si hem fet servir www.milanuncios.com, uns possibles camps podrien ser la
+població de l'anunci, el tema, el preu, o paraules clau que apareixen al títol o al cos de
+l'anunci.
+Aquesta opció la podem usar quantes vegades vulguem, ja que anirà incrementant les
+dades dins la BD.
+
+• Consultes: tenint en compte les dades que heu guardat en l'aprenentatge, heu de crear una
+pàgina on pugueu fer consultes segons diversos criteris. Aquests criteris es basaran en els
+diferents camps que heu emmagatzemat abans. Hi haurà un botó de cerca, que ens
+realitzarà aquesta i ens tornarà la llista que més s'adapti a la recerca que hem demanat. 
+Si no troba res que concordi amb els criteris, ho ha d'indicar amb un missatge 
+    "No s'han trobat dades que coincideixin amb els criteris de cerca".
+
+• Reset: esborra tot el contingut après de la web. Abans d'usar-ho cal demanar confirmació
+(si voleu la confirmació la podeu fer en Javascript).
+
+3. Base de dades: heu de crear una BD anomenada BDnom_cognom i que compleixi les següents
+característiques:
+
+    • Guardar els usuaris a una col·lecció anomenada Usuaris amb els camps d'Usuari,
+Contrasenya i comptador de Login. La contrasenya haurà d'emmagatzemar-se xifrada.
+    • El camp d'usuari ha de ser únic i no es podrà repetir. 
+    (cercar a la BD un nom igual al usuari i en funció del resultat, fer la inserció o donar l'error).
+    • El camp Comptador de Login ha d'incrementar-se en 1 cada vegada que hi hagi un Login
+per part de l'usuari.
+
+La part on guardareu les dades de la pàgina que n'obtingueu dades queda al vostre criteri, tant en
+el nom com en el disseny, ja que dependrà de la pàgina que escolliu.
+
+4. Pàgina de registre on han d'aparèixer 3 camps: 
+    Usuari, Contrasenya, Repetir Contrasenya. 
+També un botó de Registre que cridarà a la funció de registrar l'usuari. 
+Ha de comprovar que no existeixi un altre usuari amb el mateix nom, si és el cas haurà de donar un error.
+</pre>
+
+{% endblock %}
+<!-- fi main ____________________________________________________-->
+

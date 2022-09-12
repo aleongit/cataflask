@@ -1,0 +1,60 @@
+
+{% extends "layout.html" %}
+
+<!-- main _______________________________________________________________-->
+{% block content %}
+
+  <!-- mots paraulògic-->
+  <h4>Apren la solució d'avui del Paraulògic</h4>
+  <div class='apren'>
+    <p>
+    {% for el in mots %}
+    {{ el }},
+    {% endfor %}
+    </p>
+  </div>
+
+<!-- form ____________________________________________________________ -->
+<div class="container_form">
+
+    <div class="row ">
+       <h1>* Aprèn Català *</h1>
+    </div>
+    
+    <div class="row ">
+      <p class="error">{{ error }}</p>
+    </div>
+    
+    <div class="row ">
+      <p class="ok">{{ totok }}</p>
+    </div>
+    
+    <form action="scrap" method="post" >
+        <div class="row">
+          <div class="col-20">
+            <label>Paraula: </label>
+          </div>
+          <div class="col-75">
+            <input type="text" name="mot">
+          </div>
+        </div>
+    
+        <div class="row ">
+          <div class="col-20"></div>
+          <div class="col-75">
+            <!--<input id ='buto_apren'type="submit" name='apren' value='Go !'>-->
+            <button id ='buto_apren' class ='submit' name="apren" value="apren_paraulogic" type="submit">Go !</button>
+          </div>
+        </div>
+        
+      </form>
+      <!-- fi container form _____________________________________________________ -->
+    </div>
+
+<pre>
+***
+</pre>
+
+{% endblock %}
+<!-- fi main ____________________________________________________-->
+

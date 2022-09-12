@@ -1,0 +1,8 @@
+{% extends "layout_pre.html" %}
+{% block title %}Pàgina no autoritzada{% endblock %}
+{% block content %}
+  <h1>Pàgina no autoritzada</h1>
+  <p>No has iniciat sessió</p>
+  <br><br>
+  <p><a class='submit' href="{{ url_for('inici') }}">Torna</a>
+{% endblock %}

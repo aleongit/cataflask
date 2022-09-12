@@ -1,0 +1,26 @@
+
+{% extends "layout.html" %}
+
+<!-- main _______________________________________________________________-->
+{% block content %}
+
+<h1>Usuaris Mongo</h1>
+
+<pre>
+***
+</pre>
+
+<!--mostra usuaris-->
+<h3>Taula usuaris</h3>
+
+<code>
+  <ul>
+    {% for el in llista %}
+    <li>{{ el }}</li>
+    {% endfor %}
+  </ul>
+</code>
+
+{% endblock %}
+<!-- fi main ____________________________________________________-->
+

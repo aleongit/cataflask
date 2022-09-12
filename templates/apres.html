@@ -1,0 +1,77 @@
+
+{% extends "layout.html" %}
+
+<!-- main _______________________________________________________________-->
+{% block content %}
+
+<!--<h1>Après</h1>-->
+<div class='cerca'>
+  <a class='button is-info' href="apres">Borra Filtres</a>
+</div>
+
+<div>
+    <!-- per tags -->
+    <div class='cerca'>
+      {% for k,v in TAGS.items() %}
+          <a class='button' href="apres?tag={{ k }}">{{ v }}</a>
+      {% endfor %}
+    </div>
+
+    <!-- per tips -->
+    <div class='cerca'>
+      {% for tip in info['tips'] %}
+          <a class='button' href="apres?tip={{ tip }}">{{ tip }}</a>
+      {% endfor %}
+    </div>
+
+  <!-- per cats -->
+    <form action="apres" method="get" >
+      <div class="row">
+        <div class="col">
+          <select name="cat" id="cat">
+            <option value="">* per categoria *</option>
+              {% for cat in info['cats'] %}
+                <option value="{{ cat }}">{{ cat }}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <div class="col">
+          <button id ='buto_cat' class ='submit' name="consulta" value="consulta_cat" type="submit">Go !</button>
+        </div>
+      </div>
+    </form>
+
+  <!-- per cadena -->
+    <form action="apres" method="get" >
+      <div class="row">
+        <div class="col">
+          <input type="text" name="cad" value="" placeholder="* per cadena *">
+        </div>
+        <div class="col">
+          <button id ='buto_cad' class ='submit' name="consulta" value="consulta_cad" type="submit">Go !</button>
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+
+<br>
+
+<h1>* Mots Cercats *</h1>
+{% if not error %}
+  <div class='cerca'>
+    {% for mot in info['mots'] %}
+        <a class='button is-mot' href="fitxa?mot={{ mot }}">{{ mot }}</a>
+    {% endfor %}
+  </div>
+
+{% else %}
+  <h1 class="error">{{ error }}</h1>
+  <br>
+{% endif %}
+
+
+{% endblock %}
+<!-- fi main ____________________________________________________-->
+

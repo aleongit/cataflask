@@ -1,0 +1,22 @@
+{% if session.ok %}
+    {% extends "layout.html" %}
+{% else %}
+    {% extends "layout_pre.html" %}
+{% endif %}
+
+{% block title %}Pàgina no trobada{% endblock %}
+{% block content %}
+<h1>Pàgina no trobada</h1>
+<p>Aquesta pàgina no existeix</p>
+<br><br>
+
+{% if session.ok %}
+    <p><a class='submit' href="{{ url_for('home') }}">Torna</a>
+{% else %}
+    <p><a class='submit' href="{{ url_for('inici') }}">Torna</a>
+{% endif %}
+
+{% endblock %}
+
+
+

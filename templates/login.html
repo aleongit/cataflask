@@ -1,0 +1,54 @@
+{% extends "layout_pre.html" %}
+
+<!-- main _______________________________________________________________-->
+{% block content %}
+
+<!-- form ____________________________________________________________ -->
+<div class="container_form">
+
+<div class="row ">
+   <h1>* LOGIN *</h1>
+</div>
+
+<!--{% if error %}-->
+<div class="row ">
+  <p class="error">{{ error }}</p>
+</div>
+<!--{% endif %}-->
+
+<div class="row ">
+  <p class="ok">{{ totok }}</p>
+</div>
+
+<form action="login" method="post" >
+    <div class="row">
+      <div class="col-20">
+        <label>Usuari: </label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="user" id="user">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-20">
+        <label>Password: </label>
+      </div>
+      <div class="col-75">
+        <input type="password" name="pass" id="pass">
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="col-20"></div>
+      <div class="col-75">
+        <input type="submit" name='envia' value='Go !'>
+      </div>
+    </div>
+    
+  </form>
+  <!-- fi container form _____________________________________________________ -->
+</div>
+
+{% endblock %}
+<!-- fi main ____________________________________________________-->

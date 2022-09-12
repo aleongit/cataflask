@@ -1,0 +1,92 @@
+
+{% extends "layout.html" %}
+
+<!-- main _______________________________________________________________-->
+{% block content %}
+
+<h1>Scrap {% print(session.mot) %}</h1>
+
+<pre>
+***
+</pre>
+
+<nav>
+    {% if session.mot_existeix %}
+    <a class='button is-info' >* WARNING * mot in the system</a>
+    {% endif %}
+    <a class='button is-no' href="apren">No guardar</a>
+    <a class='button is-yes' href="guarda_mot">Guarda a Mongo</a>
+</nav>
+
+<h4>Rodamots</h4>
+<!--<code>{{ sopa }}</code>-->
+<code>
+{% for doc in sopa_roda %}
+    <div class='doc'>
+    {% for camp in doc %}
+        {% if doc[camp] is iterable and doc[camp] is not string  %}
+            <p><span class='camp'>{{ camp }}:</span></p>
+            {% for el in doc[camp] %}
+                <p>{{ el }}</p>
+            {% endfor %}
+        {% else %}
+            <p><span class='camp'>{{ camp }} :</span> {{ doc[camp] }}</p>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endfor %}
+</code>
+
+<h4>Diec</h4>
+<!--<code>{{ sopa2 }}</code>-->
+<code>
+    {% for el in sopa_diec %}
+        <p>{{ el }}<br></p>
+    {% endfor %}
+    </code>
+
+<h4>Termes i Traduccions</h4>
+<!--<code>{{ sopa3 }}</code>-->
+<code>
+{% for el in sopa_term %}
+    <p>{{ el }}<br></p>
+{% endfor %}
+</code>
+
+<h4>Sinònims i relacionats</h4>
+<!--<code>{{ sopa4 }}</code>-->
+<code>
+{% for el in sopa_sino %}
+    <p>{{ el }}<br></p>
+{% endfor %}
+</code>
+
+<h4>Frases Fetes</h4>
+<!--<code>{{ sopa5 }}</code>-->
+<code>
+{% for el in sopa_fras %}
+    <p>{{ el }}<br></p>
+{% endfor %}
+</code>
+
+<h4>Consultes lingüístiques Optimot</h4>
+<!--<code>{{ sopa6 }}</code>-->
+<code>
+{% for el in sopa_opti %}
+    <p>{{ el }}<br></p>
+{% endfor %}
+</code>
+
+<h4>Altres resultats optimot </h4>
+<!--<code>{{ sopa7 }}</code>-->
+<code>
+{% for el in sopa_optialtres %}
+    <p>{{ el }}<br></p>
+{% endfor %}
+</code>
+
+<!--{% print(session.docs) %}-->
+
+{% endblock %}
+<!-- fi main ____________________________________________________-->
+

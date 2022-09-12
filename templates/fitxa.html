@@ -1,0 +1,209 @@
+{% extends "layout.html" %}
+
+<!-- main _______________________________________________________________-->
+{% block content %}
+
+<nav class='fitxa_mot'>
+    <!--<a class='button is-no' href="delete_mot?mot={{ mot }}">* Delete *</a>-->
+    <!-- Button trigger modal -->
+    <button type="button" class="button is-no" data-bs-toggle="modal" data-bs-target="#deleteMot">
+        * Delete *
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteMot" tabindex="-1" aria-labelledby="deleteMotLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="deleteMotLabel">Eliminem mot?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Segur vols eliminar {{ mot }} ?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="button" data-bs-dismiss="modal">Ni de conya!</button>
+            <button type="button" class="button is-no" >
+            <a class='button is-no'  href='delete_mot?mot={{ mot }}'>Sí, no m'agrada!</a>
+            </button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+</nav>
+<h1>Fitxa {{ mot }} </h1>
+
+<!-- tags-->
+<code class='code_fitxa_xs'>
+    <p class='fitxa'><b>Tags:</b>
+        {% for el in fitxa['tags'] %}
+        <!--{% if fitxa['tags'] %}-->
+            <span class='blau'>{<span class='negre'>{{ el }}</span>}</span>
+        <!--{% endif %}-->
+        {% endfor %}
+    </p>
+</code>
+
+<!-- cats-->
+<code class='code_fitxa_xs'>
+    <p class='fitxa'><b>Categories:</b>
+        {% for el in fitxa['cats'] %}
+            <span class='blau'>{<span class='negre'>{{ el }}</span>}</span>
+        {% endfor %}
+    </p>
+</code>
+
+<!-- tips-->
+<code class='code_fitxa_xs'>
+    <p class='fitxa'><b>Tips:</b>
+        {% for el in fitxa['tips'] %}
+            <span class='blau'>{<span class='negre'>{{ el }}</span>}</span>
+        {% endfor %}
+    </p>
+</code>
+
+<!-- entrades -->
+<code class='code_fitxa_xs'>
+    <p class='fitxa'><b>Entrades:</b>
+        {% for el in fitxa['ents'] %}
+            <span class='blau'>{<span class='negre'>{{ el }}</span>}</span>
+        {% endfor %}
+    </p>
+</code>
+
+<!-- traduccions -->
+<code class='code_fitxa_xs'>
+    <p class='fitxa'><b>Traduccions/ Termes:</b>
+        {% for el in fitxa['tras'] %}
+            <span class='blau'>{<span class='negre'>{{ el }}</span>}</span>
+        {% endfor %}
+    </p>
+</code>
+
+
+
+<br>
+<!-- etimologia______________________________________________________-->
+<h4>Etimologia</h4>
+
+{% for doc in fitxa['tot'] %}
+
+    {% if doc['eti'] %}
+    <code class='code_fitxa'>
+        {{ doc['eti'] }}
+
+        <a class = "sense_deco" href="{{ doc['url_scrap'] }}">
+            <p class='fitxa'><b>Origen:</b> 
+                <span class='blau'>{<span class='negre'>{{ doc['origen'] }}</span>}</span>
+            </p>
+        </a>
+        <p class='fitxa'><b>Data Scrap:</b> 
+            <span class='blau'>{<span class='negre'>{{ doc['data_scrap'] }}</span>}</span>
+        </p>
+    </code>
+    {% endif %}
+
+{% endfor %}
+
+<br>
+<!-- definicions_______________________________________________________-->
+<h4>Definició/ns</h4>
+
+{% for doc in fitxa['tot'] %}
+
+    {% if doc['defi'] %}
+    <code class='code_fitxa'>
+        {{ doc['defi'] }}
+
+        <a class = "sense_deco" href="{{ doc['url_scrap'] }}">
+            <p class='fitxa'><b>Origen:</b> 
+                <span class='blau'>{<span class='negre'>{{ doc['origen'] }}</span>}</span>
+            </p>
+        </a>
+        <p class='fitxa'><b>Data Scrap:</b> 
+            <span class='blau'>{<span class='negre'>{{ doc['data_scrap'] }}</span>}</span>
+        </p>
+    </code>
+    {% endif %}
+
+{% endfor %}
+
+<br>
+<!-- frases fetes-->
+<h4>Expressions / Frases Fetes:</h4>
+
+{% for doc in fitxa['tot'] %}
+
+    {% if doc['frasefeta'] %}
+    <code class='code_fitxa'>
+        {{ doc['frasefeta'] }}
+
+        <a class = "sense_deco" href="{{ doc['url_scrap'] }}">
+            <p class='fitxa'><b>Origen:</b> 
+                <span class='blau'>{<span class='negre'>{{ doc['origen'] }}</span>}</span>
+            </p>
+        </a>
+        <p class='fitxa'><b>Data Scrap:</b> 
+            <span class='blau'>{<span class='negre'>{{ doc['data_scrap'] }}</span>}</span>
+        </p>
+    </code>
+    {% endif %}
+
+{% endfor %}
+
+<br>
+<!-- sinònims -->
+<h4>Sinònims:</h4>
+
+{% for doc in fitxa['tot'] %}
+
+    {% if doc['sinonims'] %}
+    <code class='code_fitxa'>
+        {{ doc['sinonims'] }}
+
+        <a class = "sense_deco" href="{{ doc['url_scrap'] }}">
+            <p class='fitxa'><b>Origen:</b> 
+                <span class='blau'>{<span class='negre'>{{ doc['origen'] }}</span>}</span>
+            </p>
+        </a>
+        <p class='fitxa'><b>Data Scrap:</b> 
+            <span class='blau'>{<span class='negre'>{{ doc['data_scrap'] }}</span>}</span>
+        </p>
+    </code>
+    {% endif %}
+
+{% endfor %}
+
+<br>
+<!-- sinònims -->
+<h4>Cerques:</h4>
+
+{% for doc in fitxa['opti'] %}
+
+    <code class='code_fitxa'>
+        {{ doc['entrada'] }}
+        {{ doc['cerca'] }}
+
+        <p class='fitxa'><b>Font:</b> 
+                <span class='blau'>{<span class='negre'>{{ doc['font'] }}</span>}</span>
+        </p>
+
+        <a class = "sense_deco" href="{{ doc['url_scrap'] }}">
+            <p class='fitxa'><b>Origen:</b> 
+                <span class='blau'>{<span class='negre'>{{ doc['origen'] }}</span>}</span>
+            </p>
+        </a>
+        <p class='fitxa'><b>Data Scrap:</b> 
+            <span class='blau'>{<span class='negre'>{{ doc['data_scrap'] }}</span>}</span>
+        </p>
+    </code>
+
+{% endfor %}
+
+
+
+
+{% endblock %}
+<!-- fi main ____________________________________________________-->
+

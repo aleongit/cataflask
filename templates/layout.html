@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projecte MongoDB - PyMongo - Framework Flask by Aleon</title>
+
+<!-- js -->
+<script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/loadingoverlay.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/aleon.js') }}" charset="utf-8"></script>
+
+<!-- css aleon -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" >
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/aleon.css') }}" >
+
+</head>
+<body>
+
+<!-- container_________________________________________________________________-->
+<div class= 'container'>
+
+<!-- menú capçalera____________________________________________________________-->
+<header>
+  <div class = 'marca'>    
+    <a class='sense_deco' href='home'>
+        <h2 class='logo'>Projecte <span class='blau'>{<span class='negre'>aleon</span>}</span></h2>
+    </a>
+  </div>
+  <nav>
+    <a class='button' href="home">/</a>
+    <a class='button' href="apren">Aprèn</a>
+    <a class='button is-new' href="apren_paraulogic">[NEW!]Paraulògic</a>
+    <a class='button' href="apres">Après</a>
+    <a class='button' href="users">Users</a>
+    <a class='button' href="about">About</a>
+    <!--<a class='button confirm' href="reset">Reset</a>-->
+
+    <!-- Button trigger modal -->
+    <button type="button" class="button confirm" data-bs-toggle="modal" data-bs-target="#reset">
+      Reset
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="reset" tabindex="-1" aria-labelledby="resetLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="resetLabel">Reset Mots ?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Eliminar tots els mots apresos ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="button" data-bs-dismiss="modal">Ni de conya!</button>
+            <button type="button" class="button is-no" >
+              <a class='button is-no'  href='reset'>Elimina</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--<a class='button' href="restore">Restore</a>-->
+    <!-- Button trigger modal -->
+    <button type="button" class="button confirm" data-bs-toggle="modal" data-bs-target="#restore">
+      Restore
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="restore" tabindex="-1" aria-labelledby="restoreLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="restoreLabel">Restore últim dump ?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Restaurar el backup dels mots ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="button" data-bs-dismiss="modal">No cal</button>
+            <button type="button" class="button is-no" >
+              <a class='button is-no'  href='restore'>Sí, l'he liat!</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <a class='button' href="logout">Logout</a>
+  </nav>
+
+    <!-- fi menú cap __________________________________________________________-->
+</header>
+
+<div class=metanav>
+    {% if session.ok %}
+      Session OK / {% print(session.ok) %} / {% print(session.usuari) %}
+    {% else %}
+      Session KO
+    {% endif %}
+</div>
+
+{% for message in get_flashed_messages() %}
+  {{ message }} / 
+{% endfor %}
+
+<!-- main _______________________________________________________________-->
+<div class= 'main'>
+{% block content %}{% endblock %}
+</div>
+
+<!-- fi container ____________________________________________________-->
+</div>
+
+<footer>
+  <p>v 1.0 © Aleix Leon 2021-22</p>
+</footer>
+
+</body>
+</html>

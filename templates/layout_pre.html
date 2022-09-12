@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ca"> <!-- meta idioma -->
+
+<head>
+    <meta charset="utf-8"><!--meta joc de caràcters -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- etiqueta per HTML responsive -->
+    <meta name="description" content="">
+    <meta name="author" content="Aleix Leon">
+
+<title>Projecte MongoDB - PyMongo - Framework Flask by Aleon</title><!-- títol de la web -->
+
+<!-- js -->
+<script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/loadingoverlay.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/aleon.js') }}" charset="utf-8"></script>
+
+<!-- css aleon -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/aleon.css') }}" >
+
+</head>
+<body>
+
+<!-- container_________________________________________________________________-->
+<div class= 'container'>
+
+<!-- menú capçalera____________________________________________________________-->
+<header>
+  <div class = 'marca'>    
+    <h2 class='logo'>Projecte <span class='blau'>{<span class='negre'>aleon</span>}</span></h2>
+  </div>
+  <nav>
+    <a class='button' href="/">Login</a>
+    <a class='button is-info' href="signup">Sign Up</a>
+  </nav>
+  <!-- fi menú cap ___________________________________________________-->
+</header>
+
+<div class=metanav>
+  {% if session.ok %}
+    Session OK / {% print(session.ok) %} / {% print(session.usuari) %}
+  {% else %}
+    Session KO
+  {% endif %}
+</div>
+
+    <!-- content _________________________________________________________-->
+<div class='main'>
+{% block content %}{% endblock %}
+</div>
+
+  <!-- fi container ____________________________________________________-->
+</div>
+
+<footer>
+  <p>v 1.0 © Aleix Leon 2021-22</p>
+</footer>
+
+</body>
+</html>

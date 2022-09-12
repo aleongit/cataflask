@@ -1,0 +1,23 @@
+
+{% extends "layout.html" %}
+
+<!-- main _______________________________________________________________-->
+{% block content %}
+
+<h1>Benvingut/da {% print(session.usuari) %} :)</h1>
+
+<pre>
+***</pre>
+
+<div>
+    <p>Apreses {{ info['quantitat'] }} paraula/es:</p><br>
+    <p>
+    {% for mot in info['mots'] %}
+        <a href="fitxa?mot={{ mot }}" >{{ mot }}</a>,
+    {% endfor %}
+    </p>
+</div>
+
+{% endblock %}
+<!-- fi main ____________________________________________________-->
+
