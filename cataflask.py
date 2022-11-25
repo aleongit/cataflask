@@ -460,12 +460,16 @@ def scrap_paraulogic():
 
         #agafem mots
         scripts = soup.find_all('script')
+        #print(scripts)
         for script in scripts:
             lls.append(str(script))
-        #print(ll)
+        #print(lls)
         print(len(lls))
-        print(lls[0])
-        print(type(lls[0]))
+
+        pos = 1 # posició de l'script on hi ha les paraules
+
+        print(lls[pos])
+        print(type(lls[pos]))
         """
         var y={"l":["b","n","h","m","i","s","o"],
         "p":{"binomi": "binomi","biso": "bisó",...
@@ -474,18 +478,18 @@ def scrap_paraulogic():
         """
         #cal trobar 2n "p":{ que són els mots d'avui, els altres són els d'ahir
         #posició
-        ini = lls[0].rfind('"p":{') + 4
+        ini = lls[pos].rfind('"p":{') + 4
         print('???_______',ini)
         #ara posició + 4 tenim {
-        print(lls[0][ini])
+        print(lls[pos][ini])
 
         #ara buscar } a partir d'ini
-        fi = lls[0].find('}',ini)
+        fi = lls[pos].find('}',ini)
         print(fi)
-        print(lls[0][fi])
+        print(lls[pos][fi])
 
         #agafar string paraules entre {}
-        cad = lls[0][ini+1:fi]
+        cad = lls[pos][ini+1:fi]
 
         #trec doble cometes
         cad = cad.replace('"', '')
