@@ -160,3 +160,20 @@ DB, collections, paths defined in cataflask.py
 - python cataflask.py
 - Open your browser and go to http://127.0.0.1:5000/
 - Sign up on http://127.0.0.1:5000/signup
+
+![Screenshot](img/1.png)
+![Screenshot](img/2.png)
+![Screenshot](img/3.png)
+![Screenshot](img/4.png)
+![Screenshot](img/5.png)
+![Screenshot](img/6.png)
+![Screenshot](img/7.png)
+![Screenshot](img/8.png)
+![Screenshot](img/9.png)
+![Screenshot](img/10.png)
+![Screenshot](img/11.png)
+![Screenshot](img/12.png)
+![Screenshot](img/13.png)
+![Screenshot](img/14.png)
+![Screenshot](img/15.png)
+![Screenshot](img/16.png)
