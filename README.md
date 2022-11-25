@@ -122,6 +122,9 @@ Bootstrap 5.1.3 - https://getbootstrap.com/
 
 ## Getting Started
 
+- Download the same version of ChromeDriver as the current version of your browser
+- https://sites.google.com/chromium.org/driver/
+
 To run the demo locally, clone the repository and move into it:
 - git clone git@github.com:aleongit/cataflask.git
 - cd cataflask
