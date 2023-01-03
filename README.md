@@ -77,48 +77,48 @@ Resultats de la 1a pàgina. Fitxes lingüístiques.
 
 ## Programari utilitzat a la 1a versió
 
-**OS**
-Windows 10 Pro 64 bits
+- **OS**
+- Windows 10 Pro 64 bits
 
-**IDE**
-Visual Studio Code 1.63.2 - https://code.visualstudio.com/
+- **IDE**
+- Visual Studio Code 1.63.2 - https://code.visualstudio.com/
 
-**DB**
-MongoDB server version: 5.0.3
-mongodb-database-tools-windows-x86_64-100.5.1
-https://www.mongodb.com/
+- **DB**
+- MongoDB server version: 5.0.3
+- mongodb-database-tools-windows-x86_64-100.5.1
+- https://www.mongodb.com/
 
-**Llenguatge Programació**
-Python 3.9.10 - https://www.python.org/
+- **Llenguatge Programació**
+- Python 3.9.10 - https://www.python.org/
 
-**Entorn Virtual**
-venv - https://docs.python.org/3/library/venv.html
+- **Entorn Virtual**
+- venv - https://docs.python.org/3/library/venv.html
 
-**Gestor Paquets**
-pip - https://pypi.org/project/pip/
+- **Gestor Paquets**
+- pip - https://pypi.org/project/pip/
 
-**Llibreria DB**
-pymongo - https://pymongo.readthedocs.io/en/stable/
+- **Llibreria DB**
+- pymongo - https://pymongo.readthedocs.io/en/stable/
 
-**Framework / Llibreria**
-Flask - https://flask.palletsprojects.com/en/2.0.x/
+- **Framework / Llibreria**
+- Flask - https://flask.palletsprojects.com/en/2.0.x/
 
-**Llibreries Web Scraping**
-BeautifulSoup - https://www.crummy.com/software/BeautifulSoup/bs4/doc/
-Selenium - https://selenium-python.readthedocs.io/
-chromedriver v.96 - https://sites.google.com/chromium.org/driver/
+- **Llibreries Web Scraping**
+- BeautifulSoup - https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+- Selenium - https://selenium-python.readthedocs.io/
+- chromedriver v.96 - https://sites.google.com/chromium.org/driver/
 
-**Altres llibreries Python**
-passlib, requests, os, time, datetime, re, pickle
+- **Altres llibreries Python**
+- passlib, requests, os, time, datetime, re, pickle
 
-**JavaScript**
-jQuery 3.6.0 - https://jquery.com/
-jQuery LoadingOverlay - https://gasparesganga.com/labs/jquery-loading-overlay/
+- **JavaScript**
+- jQuery 3.6.0 - https://jquery.com/
+- jQuery LoadingOverlay - https://gasparesganga.com/labs/jquery-loading-overlay/
 
-**CSS**
-Bootstrap 5.1.3 - https://getbootstrap.com/
+- **CSS**
+- Bootstrap 5.1.3 - https://getbootstrap.com/
 
-**HTML 5**
+- **HTML 5**
 
 ## Getting Started
 
