@@ -21,7 +21,7 @@ L’aplicació disposa de registre usuari i login a la base de dades, amb les va
 La maquetació pretén ser neta i clara amb plantilles HTML, re-utilitzant blocs de codi (layouts, includes) i bilding per la sortida de resultats.
 Utilitzats estils propis CSS i algun de Bootstrap (per la gestió d’alertes modals).
 
-També utilitzat algun fitxer JavaScript, jQuery per millorar la experiència de l’usuari, tal com elements spinners o les alertes de confirmació.
+També utilitzat JavaScript i jQuery per millorar la experiència de l’usuari, tal com elements spinners o les alertes de confirmació.
 
 Tots els fitxers estructurats i ordenats a les seves corresponents carpetes.
 
