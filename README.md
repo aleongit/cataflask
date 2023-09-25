@@ -106,7 +106,10 @@ Resultats de la 1a pàgina. Fitxes lingüístiques.
 - **Llibreries Web Scraping**
 - BeautifulSoup - https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 - Selenium - https://selenium-python.readthedocs.io/
-- chromedriver v.96 - https://sites.google.com/chromium.org/driver/
+- chromedriver 117.0.5938.92
+- https://sites.google.com/chromium.org/driver/
+- https://googlechromelabs.github.io/chrome-for-testing/#stable
+
 
 - **Altres llibreries Python**
 - passlib, requests, os, time, datetime, re, pickle

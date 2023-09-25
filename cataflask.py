@@ -466,7 +466,7 @@ def scrap_paraulogic():
         #print(lls)
         print(len(lls))
 
-        pos = 1 # posició de l'script on hi ha les paraules
+        pos = 3 # posició de l'script on hi ha les paraules
 
         print(lls[pos])
         print(type(lls[pos]))
