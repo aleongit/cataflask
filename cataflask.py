@@ -466,7 +466,7 @@ def scrap_paraulogic():
         #print(lls)
         print(len(lls))
 
-        pos = 3 # posició de l'script on hi ha les paraules
+        pos = 4 # posició de l'script on hi ha les paraules
 
         print(lls[pos])
         print(type(lls[pos]))
@@ -992,7 +992,7 @@ def apren():
 
     if (url):
         print('ok url get')
-        mots = scrap_categoria(url)
+        # mots = scrap_categoria(url) # Driver Selenium; NO és útil
     else:
         print('no url get')
         mots = scrap_ultims()
@@ -1031,11 +1031,12 @@ def scrap():
         #valida input
         if valida_mot(mot):
             
+            ll_diec = ll_fras = []
             ll_roda = scrap_rodamots(mot)
-            ll_diec = scrap_diec(mot)
+            # ll_diec = scrap_diec(mot) # Driver Selenium; NO és útil
             ll_term = scrap_termes(mot)
             ll_sino = scrap_sinonims(mot)
-            ll_fras = scrap_frases(mot)
+            # ll_fras = scrap_frases(mot) # Driver Selenium; NO és útil
             ll_opti = scrap_optimot(mot,'FITXA')
             ll_optialtres = scrap_optimot(mot)
 
