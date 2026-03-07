@@ -8,6 +8,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 
 import pickle #per exportar fitxer
+import math
 
 #encriptar
 #$ sudo pip install passlib
@@ -555,7 +556,7 @@ def scrap_categories():
             url = item.find('a')['href']
             cat = item.text
             ll.append( (cat,url) )
-        #print(ll)
+        # print(ll)
     
     except Exception as e:
         print("* FATAL ERROR SCRAP *", e)
@@ -563,49 +564,44 @@ def scrap_categories():
     print(len(ll), 'registre/s...')
     return ll
 
-#utilitzo selenium i driver per clicks a pàgina, passo url
-def scrap_categoria(url):
+# la categoria pot tenir diverses pàgines
+# https://rodamots.cat/tema/accidents-geografics/
+# https://rodamots.cat/tema/accidents-geografics/page/1/
+# https://rodamots.cat/tema/accidents-geografics/page/2/
+def scrap_categoria(url, quantitat_mots):
+    MOTS_PER_PAGINA = 40
     ll = []
-    
-    options = Options()
-    options.headless = True
-    options.add_argument("--window-size=1920,1200")
-
-    driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
-
+    # Calculem quantes pàgines hem de visitar
+    num_pagines = math.ceil(quantitat_mots / MOTS_PER_PAGINA)
+    print(f"Total mots a obtenir: {quantitat_mots} | Pàgines a visitar: {num_pagines}")
     try:
-        print('GET mots de categoria...')
-        driver.get(url)
+        for i in range(1, num_pagines + 1):
+            # Construïm la URL de la pàgina
+            # Si és la primera, normalment no porta /page/1/, però ho podem gestionar:
+            pag_url = f"{url.rstrip('/')}/page/{i}/" if i > 1 else url
+            print(f"Visitant pàgina: {pag_url}")
 
-        #agafar mots 1a pàg
-        items = driver.find_elements(By.CLASS_NAME,'h2')
-        for el in items:
-            ll.append(el.text)
-
-        #agafar links pags
-        links = driver.find_elements(By.CSS_SELECTOR ,'.page-numbers a')
-        print('pàgines: ', len(links))
-        
-        #links a llista, menys l'últim que és repetit '->'
-        pags = [link.get_property('href') for link in links][:-1]
-        print(pags)
-
-        #si resultats
-        if len(pags) > 0:
-            for pag in pags:
-                #carregar de nou la pàgina a driver
-                driver.get(pag)
-                        
-                #agafar mots pàg
-                items = driver.find_elements(By.CLASS_NAME,'h2')
-                for el in items:
-                    ll.append(el.text)
-                #print(ll)
+            # controlem status code pàgina
+            response = requests.get(pag_url)
+            if response.status_code != 200:
+                print(f"Error accedint a {pag_url}")
+                continue
+                
+            soup = BeautifulSoup(response.text, 'html.parser')
+            # Busquem els elements h2 (on hi ha els mots)
+            items = soup.find_all('h2') 
+            for el in items:
+                text = el.get_text(strip=True)
+                if text: # Evitem buits
+                    ll.append(text)
+            
+            # Petit delay per no saturar el servidor
+            time.sleep(0.5)
             
     except Exception as e:
         print("* FATAL ERROR SCRAP *", e)
-
-    driver.quit()
+    
+    print(ll)
     print(len(ll), 'registre/s...')
     return ll
 
@@ -992,7 +988,17 @@ def apren():
 
     if (url):
         print('ok url get')
-        # mots = scrap_categoria(url) # Driver Selenium; NO és útil
+        # agafem categoria seleccionada: exemple "accidents geogràfics (50)""
+        raw_cat = request.args.get('cat', '')
+        match = re.search(r'(.*)\((\d+)\)', raw_cat)
+        if match:
+            nom_categoria = match.group(1).strip()
+            quantitat_mots = int(match.group(2))
+        else:
+            nom_categoria = raw_cat
+            quantitat_mots = 0
+        print(f"Categoria: {nom_categoria}, Quantitat: {quantitat_mots}")
+        mots = scrap_categoria(url, quantitat_mots)
     else:
         print('no url get')
         mots = scrap_ultims()

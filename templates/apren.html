@@ -56,7 +56,7 @@
 <div class='apren'>
   <p>
   {% for cat in cats %}
-    <a class ='apren_cat' href="apren?url={{ cat[1] }}" >{{ cat[0] }}</a>,
+    <a class ='apren_cat' href="apren?url={{ cat[1] }}&cat={{ cat[0] }}" >{{ cat[0] }}</a>,
   {% endfor %}
   </p>
 </div>
