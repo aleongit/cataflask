@@ -2,7 +2,7 @@
 
 A Flask App example with MongoDB.
 Use of web scraping, layout, session, jQuery and Bootstrap 5.
-Use of BeautifulSoup, Selenium and ChromeDriver for web scraping.
+Use of BeautifulSoup, ~~Selenium and ChromeDriver~~ for web scraping.
 
 ## Description
 
@@ -27,7 +27,7 @@ Tots els fitxers estructurats i ordenats a les seves corresponents carpetes.
 
 Per l’intercanvi d’informació, he utilitzat tan els mètodes GET com POST, o variables de sessió del propi framework. I en algun cas, fitxers, quan la informació és molt gran.
 
-Pel web scraping, a part del BeautifulSoup, he utilitzat Selenium juntament amb el driver del navegador Google Chrome, eina més potent per controlar el DOM d’una pàgina web, permetent, per exemple, agafar resultats quan hi ha més d’una pàgina.
+~~Pel web scraping, a part del BeautifulSoup, he utilitzat Selenium juntament amb el driver del navegador Google Chrome, eina més potent per controlar el DOM d’una pàgina web, permetent, per exemple, agafar resultats quan hi ha més d’una pàgina.~~
 
 Així doncs, el framework web utilitzat ha estat el Flask, la base de dades MongoDB, i la programació realitzada amb Python, juntament amb la llibreria PyMongo per accés a la base de dades.
 
@@ -35,7 +35,7 @@ L'aplicació també interectura amb còpies de seguretat i restauració de la ba
 
 ## URL scrapejades
 
-*Funcionant a pàgines versions 2021/2022
+*Funcionant a 2026
 
 1. Paraulògic https://vilaweb.cat/paraulogic/ 
 Solució del joc, obtenint la llista de paraules dins <script>
@@ -52,8 +52,9 @@ Tots els mots d’una categoria en concret
 5. Rodamots https://rodamots.cat/{mot}/ 
 Fitxa del mot
 
-6. Diec https://dlc.iec.cat/Results?DecEntradaText={mot} 
-Fitxa del mot, i obtenció de totes les definicions si hi ha més d’una pàgina 
+6. ~~Diec~~
+~~https://dlc.iec.cat/Results?DecEntradaText={mot}~~
+~~Fitxa del mot, i obtenció de totes les definicions si hi ha més d’una pàgina~~
 
 7. Softcatalà https://www.softcatala.org/diccionari-de-sinonims/pa
 raula/{mot}/
@@ -63,9 +64,9 @@ Resultats de la cerca. Sinònims
 dvanced&thematic_area=&language=ca&condition=match&fields=&category=&hierarchy=
 Resultats de la cerca.
 
-9. Termes i traduccions
-UAB https://dsff.uab.cat/cerca?mode=Conté&frase={mot} 
-Resultats de la cerca. Frases fetes
+9. ~~UAB: Termes i traduccions~~
+~~https://dsff.uab.cat/cerca?mode=Conté&frase={mot}~~
+~~Resultats de la cerca. Frases fetes~~
 
 10. Optimot https://aplicacions.llengua.gencat.cat/llc/AppJava/in
 dex.html?action=Principal&method=cerca_generica&input_cercar=${mot_sense}&tipusCerca=cerca.tot
@@ -105,10 +106,12 @@ Resultats de la 1a pàgina. Fitxes lingüístiques.
 
 - **Llibreries Web Scraping**
 - BeautifulSoup - https://www.crummy.com/software/BeautifulSoup/bs4/doc/
-- Selenium - https://selenium-python.readthedocs.io/
-- chromedriver 117.0.5938.92
-- https://sites.google.com/chromium.org/driver/
-- https://googlechromelabs.github.io/chrome-for-testing/#stable
+
+- **DEPRECATED: Llibreries Web Scraping**
+- ~~Selenium - https://selenium-python.readthedocs.io/~~
+- ~~chromedriver 117.0.5938.92~~
+- ~~https://sites.google.com/chromium.org/driver/~~
+- ~~https://googlechromelabs.github.io/chrome-for-testing/#stable~~
 
 
 - **Altres llibreries Python**
@@ -161,8 +164,48 @@ DB, collections, paths defined in cataflask.py
 - cd cataflask
 - venv\Scripts\activate
 - python cataflask.py
+or
+- cd cataflask
+- ``bin\start.cmd``
 - Open your browser and go to http://127.0.0.1:5000/
 - Sign up on http://127.0.0.1:5000/signup
+
+## Debug
+- cd cataflask
+``bin\debug.cmd``
+- Open your browser and go to http://127.0.0.1:5000/
+- Run Start Debugging on VSCode
+
+## Debug Config
+- venv\Scripts\activate
+- install debugpy ``venv\Scripts\python -m pip install debugpy``
+- create script file in **bin\debug.cmd**
+```
+@echo off
+call venv\Scripts\activate
+python venv\Lib\site-packages\debugpy --listen 0.0.0.0:5678 cataflask.py
+pause
+
+```
+- create **.vscode\launch.json**
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Debugpy",
+      "type": "python",
+      "request": "attach",
+      "port": 5678,
+      "host": "localhost"
+    }
+  ]
+}
+```
+- Execute Script ``bin\debug.cmd``
+- Run Start Debugging on VSCode
+
+
 
 ![Screenshot](screenshots/1.png)
 
