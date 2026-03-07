@@ -115,7 +115,7 @@ Resultats de la 1a pàgina. Fitxes lingüístiques.
 
 
 - **Altres llibreries Python**
-- passlib, requests, os, time, datetime, re, pickle
+- passlib, requests, os, time, datetime, re, pickle, math
 
 - **JavaScript**
 - jQuery 3.6.0 - https://jquery.com/
@@ -128,8 +128,8 @@ Resultats de la 1a pàgina. Fitxes lingüístiques.
 
 ## Getting Started
 
-- Download the same version of ChromeDriver as the current version of your browser
-- https://sites.google.com/chromium.org/driver/
+- ~~Download the same version of ChromeDriver as the current version of your browser~~
+- ~~https://sites.google.com/chromium.org/driver/~~
 
 To run the demo locally, clone the repository and move into it:
 - git clone git@github.com:aleongit/cataflask.git
@@ -172,7 +172,7 @@ or
 
 ## Debug
 - cd cataflask
-``bin\debug.cmd``
+- ``bin\debug.cmd``
 - Open your browser and go to http://127.0.0.1:5000/
 - Run Start Debugging on VSCode
 
