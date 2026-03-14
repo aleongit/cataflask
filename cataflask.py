@@ -459,18 +459,23 @@ def scrap_paraulogic():
         soup = BeautifulSoup(pag.text, 'html.parser')
         #print(soup)
 
-        #agafem mots
+        #agafem tots els scropts i busquem el que conté l'string de l'autor
         scripts = soup.find_all('script')
         #print(scripts)
         for script in scripts:
-            lls.append(str(script))
-        #print(lls)
-        print(len(lls))
+            if script.string and 'Pere Orga <pere@orga.cat>' in script.string:
+                script_tag = script
+                break
 
-        pos = 4 # posició de l'script on hi ha les paraules
+        # versió lambda
+        # script_tag = soup.find(
+        #     'script', string=lambda text: text and 'Pere Orga <pere@orga.cat>' in text)
+        
+        if script_tag:
+            script_content = script_tag.string # = str(script_tag)
+            print("Script trobat!")
+            # print(script_content)
 
-        print(lls[pos])
-        print(type(lls[pos]))
         """
         var y={"l":["b","n","h","m","i","s","o"],
         "p":{"binomi": "binomi","biso": "bisó",...
@@ -479,18 +484,18 @@ def scrap_paraulogic():
         """
         #cal trobar 2n "p":{ que són els mots d'avui, els altres són els d'ahir
         #posició
-        ini = lls[pos].rfind('"p":{') + 4
+        ini = script_content.rfind('"p":{') + 4
         print('???_______',ini)
         #ara posició + 4 tenim {
-        print(lls[pos][ini])
+        print(script_content[ini])
 
         #ara buscar } a partir d'ini
-        fi = lls[pos].find('}',ini)
+        fi = script_content.find('}',ini)
         print(fi)
-        print(lls[pos][fi])
+        print(script_content[fi])
 
         #agafar string paraules entre {}
-        cad = lls[pos][ini+1:fi]
+        cad = script_content[ini+1:fi]
 
         #trec doble cometes
         cad = cad.replace('"', '')
